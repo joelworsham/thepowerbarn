@@ -42,27 +42,23 @@ class ThePowerBarn {
 	 */
 	public $files = array(
 		'frontend' => array(
-			'css' => array(
+			'css'  => array(
 				array(
-					'handle' => 'frontend-main',
+					'handle'   => 'frontend-main',
 					'filename' => 'frontend-main'
 				),
 				array(
-					'handle' => 'foundation',
+					'handle'   => 'foundation',
 					'filename' => 'foundation.min',
-					'version' => '1.5'
+					'version'  => '1.5'
 				)
 			),
-			'js' => array(
-			),
-			'font' => array(
-			)
+			'js'   => array(),
+			'font' => array()
 		),
-		'backend' => array(
-			'css' => array(
-			),
-			'js' => array(
-			)
+		'backend'  => array(
+			'css' => array(),
+			'js'  => array()
 		),
 	);
 
@@ -82,8 +78,15 @@ class ThePowerBarn {
 		$this->require_necessities();
 		$this->add_wrapper_classes();
 
+		// Add thumbnail support and options
 		add_theme_support( 'post-thumbnails' );
-		add_filter( 'excerpt_length', array( $this, 'custom_excerpt_length'), 999 );
+		add_image_size( 'product', 500, 500, true );
+
+		// Modify the excerpt length to whatever we've set
+		add_filter( 'excerpt_length', array( $this, 'custom_excerpt_length' ), 999 );
+
+		// Register some sidebars
+		add_action( 'init', array( $this, 'register_sidebars' ) );
 	}
 
 	/**
@@ -108,8 +111,32 @@ class ThePowerBarn {
 		}
 	}
 
+	/**
+	 * Changes the excerpt to a specified length.
+	 *
+	 * @since ThePowerBarn 0.1
+	 *
+	 * @return int The new custom length.
+	 */
 	public function custom_excerpt_length() {
 		return $this->excerpt_length;
+	}
+
+	/**
+	 * Registers all of our theme sidebars.
+	 *
+	 * @since ThePowerBarn 0.1
+	 */
+	public function register_sidebars() {
+		// Register all 4 footer boxes
+		for ( $i = 1; $i <= 4; $i++ ) {
+			register_sidebar( array(
+				'name'         => "Footer $i",
+				'id'           => "footer-$i",
+				'before_title' => '<h4>',
+				'after_title'  => '</h4>',
+			) );
+		}
 	}
 }
 

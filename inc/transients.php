@@ -18,8 +18,8 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	 * @since ThePowerBarn 0.1
 	 */
 	function __construct() {
-		add_action( 'save_post', 'manage_transients' );
-		add_action( 'delete_post', 'manage_transients' );
+		add_action( 'save_post', array( $this, 'manage_transients' ) );
+		add_action( 'delete_post', array( $this, 'manage_transients' ) );
 	}
 	/**
 	 * Gets stored transients, or creates them.
@@ -40,7 +40,7 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 		// If bypass is set to true, skip getting the transient altogether
 		// Otherwise, get the transient and save it in $obj
 		if ( ! $bypass ) {
-			$obj = get_transient( 'jw_' . $ID );
+			$obj = get_transient( 'pb_' . $ID );
 		} else {
 			$obj = null;
 		}
@@ -56,18 +56,45 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 		// If our transient returned nothing, then get the posts manually
 		// Otherwise, move on
 		if ( ! $obj ) {
-			$obj = get_posts( $args );
-			if ( ! empty( $expire ) ) {
-				set_transient( 'jw_' . $ID, $obj, $expire );
-			} else {
-				set_transient( 'jw_' . $ID, $obj, YEAR_IN_SECONDS );
-			}
+			$obj = get_terms( $args );
+			set_transient( 'pb_' . $ID, $obj, YEAR_IN_SECONDS );
 		}
 
 		// Store transients for managing
-		$transients        = get_option( 'jw_transients', array() );
+		$transients        = get_option( 'pb_transients', array() );
 		$transients[ $ID ] = array( 'ID' => $ID, 'post_type' => $post_type );
-		update_option( 'jw_transients', $transients );
+		update_option( 'pb_transients', $transients );
+
+		// Return our finalized object
+		return $obj;
+	}
+
+	public static function get_terms( $ID, $taxonomies = array( 'category' ), $args = null, $post_type = null, $bypass = false ) {
+		// If bypass is set to true, skip getting the transient altogether
+		// Otherwise, get the transient and save it in $obj
+		if ( ! $bypass ) {
+			$obj = get_transient( 'pb_' . $ID );
+		} else {
+			$obj = null;
+		}
+
+		// Require certain arguments
+		if ( ! isset( $post_type ) ) {
+			echo 'Invalid: Need argument $post_type.';
+			return false;
+		}
+
+		// If our transient returned nothing, then get the posts manually
+		// Otherwise, move on
+		if ( ! $obj ) {
+			$obj = get_terms( $taxonomies, $args );
+			set_transient( 'pb_' . $ID, $obj, YEAR_IN_SECONDS );
+		}
+
+		// Store transients for managing
+		$transients        = get_option( 'pb_transients', array() );
+		$transients[ $ID ] = array( 'ID' => $ID, 'post_type' => $post_type );
+		update_option( 'pb_transients', $transients );
 
 		// Return our finalized object
 		return $obj;
@@ -82,12 +109,12 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	 */
 	public function manage_transients( $post_id ) {
 		$post       = get_post( $post_id );
-		$transients = get_option( 'jw_transients' );
+		$transients = get_option( 'pb_transients' );
 
 		if ( ! empty( $transients ) ) {
 			foreach ( $transients as $trans ) {
 				if ( $post->post_type == $trans['post_type'] ) {
-					delete_transient( 'jw_' . $trans['ID'] );
+					delete_transient( 'pb_' . $trans['ID'] );
 				}
 			}
 		}
