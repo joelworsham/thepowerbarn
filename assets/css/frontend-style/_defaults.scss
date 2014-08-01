@@ -1,0 +1,27 @@
+// Box sizing
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+
+// Body defaults
+body {
+  font-size: $font-size-base;
+  color: $color-body-font;
+  background-color: $color-body-back;
+  font-family: $font-body;
+}
+
+// Links
+a {
+  color: $color-link;
+  &.invert {
+    color: $color-link-hover;
+    &:hover {
+      color: $color-link;
+    }
+  }
+  &:hover {
+    color: $color-link-hover;
+    text-decoration: underline;
+  }
+}

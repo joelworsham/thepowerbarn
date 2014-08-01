@@ -1,0 +1,23 @@
+// Main color scheme
+$color-primary: #e33c33;
+$color-dark: #333;
+$color-light: #ddd;
+
+// Body colors
+$color-body-font: $color-dark;
+$color-body-back: $color-light;
+
+// Link colors
+$color-link: $color-primary;
+$color-link-hover: $color-body-font;
+
+// Sidebar colors
+$color-sidebar-font: $color-light;
+$color-sidebar-back: $color-dark;
+
+// Fonts
+$font-body: 'Open Sans', sans-serif;
+$font-size-base: 14px;
+
+// Widths
+$width-sidebar: 400px;
