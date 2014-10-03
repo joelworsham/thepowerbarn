@@ -34,7 +34,7 @@ class ThePowerBarn_Scripts extends ThePowerBarn {
 					if ( $type == 'css' ) {
 						wp_register_style(
 							$file['handle'],
-							get_template_directory_uri() . '/assets/css/' . $file['filename'] . '.css',
+							get_template_directory_uri() . '/assets/css/' . ( isset( $file['filename'] ) ? $file['filename'] : $file['handle'] ) . '.css',
 							isset( $file['deps'] ) ? $file['deps'] : null,
 							isset( $file['version'] ) ? $file['version'] : $this->version
 						);
@@ -48,7 +48,7 @@ class ThePowerBarn_Scripts extends ThePowerBarn {
 					} elseif ( $type == 'js' ) {
 						wp_register_script(
 							$file['handle'],
-							get_template_directory_uri() . '/assets/js/' . $file['filename'] . '.js',
+							get_template_directory_uri() . '/assets/js/' . ( isset( $file['filename'] ) ? $file['filename'] : $file['handle'] ) . '.js',
 							isset( $file['deps'] ) ? $file['deps'] : null,
 							isset( $file['version'] ) ? $file['version'] : $this->version,
 							isset( $file['footer'] ) ? $file['footer'] : false

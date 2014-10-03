@@ -1,0 +1,15 @@
+// Transition including vender-prefixes
+@mixin transition($prop, $time, $trans: null) {
+  -webkit-transition: $prop $time $trans;
+  -moz-transition: $prop $time $trans;
+  -o-transition: $prop $time $trans;
+  transition: $prop $time $trans;
+}
+
+// Box-shadow including vendor-prefixes
+@mixin box-shadow($x, $y, $blur, $color, $spread: 0) {
+  box-shadow: $x $y $blur $spread $color;
+  -moz-box-shadow: $x $y $blur $spread $color;
+  -o-box-shadow: $x $y $blur $spread $color;
+  -webkit-box-shadow: $x $y $blur $spread $color;
+}

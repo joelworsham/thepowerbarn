@@ -1,4 +1,16 @@
-<?php global $ThePowerBarn; ?>
+<?php
+/**
+ * The header for The Power Barn.
+ *
+ * @since ThePowerBarn 0.1
+ *
+ * @package WordPress
+ * @subpackage ThePowerBarn
+ * @category Basic Theme Files
+ */
+
+global $ThePowerBarn;
+?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15,17 +27,21 @@
 <div id="wrapper" class="<?php echo $ThePowerBarn->wrapper_classes; ?>">
 
 	<header id="site-header" class="row">
-		<div class="columns large-12">
+		<div class="columns small-12">
 			<div class="row logo-area">
-				<div class="columns large-12">
+				<div class="columns small-12">
 					<div class="site-logo">
 						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.jpg" alt="The Power Barn" />
 					</div>
 				</div>
 			</div>
 
-			<nav class="row menu-area">
-				<?php get_template_part( 'menu', 'header' ); ?>
-			</nav>
+			<div class="row menu-area">
+				<div class="columns small-12">
+					<?php get_template_part( '/inc/navigation' ); ?>
+				</div>
+			</div>
 		</div>
 	</header>
+
+	<section id="content" class="row">

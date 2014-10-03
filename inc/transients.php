@@ -36,15 +36,7 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	 *
 	 * @return mixed The object retrieved from the database.
 	 */
-	public static function get_posts( $ID, $args = null, $bypass =false ) {
-		// If bypass is set to true, skip getting the transient altogether
-		// Otherwise, get the transient and save it in $obj
-		if ( ! $bypass ) {
-			$obj = get_transient( 'pb_' . $ID );
-		} else {
-			$obj = null;
-		}
-
+	public static function get_posts( $args = null, $bypass =false ) {
 		// See if our post type has been defined in the arguments
 		// Otherwise, set it to 'post' as default
 		if ( array_key_exists( 'post_type', $args ) ) {
@@ -53,10 +45,35 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 			$post_type = 'post';
 		}
 
+		// Generate the ID
+		$ID = $post_type;
+		foreach ( $args as $key => $value ) {
+			if ( ! is_array( $value ) && $key != 'post_type') {
+				$ID .= "_{$key}_$value";
+			} else {
+				if ( $key == 'tax_query' ) {
+					foreach( $value as $tax_query ) {
+						foreach ( $tax_query as $tax_key => $tax_value ) {
+							$ID .= "_{$tax_key}_$tax_value";
+						}
+					}
+				}
+			}
+		}
+
+		// If bypass is set to true, skip getting the transient altogether
+		// Otherwise, get the transient and save it in $obj
+		if ( ! $bypass ) {
+			$obj = get_transient( 'pb_' . $ID );
+		} else {
+			$obj = null;
+		}
+
+
 		// If our transient returned nothing, then get the posts manually
 		// Otherwise, move on
 		if ( ! $obj ) {
-			$obj = get_terms( $args );
+			$obj = get_posts( $args );
 			set_transient( 'pb_' . $ID, $obj, YEAR_IN_SECONDS );
 		}
 

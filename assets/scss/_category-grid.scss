@@ -1,0 +1,9 @@
+// A grid of categories
+.category-grid {
+  @extend .product-grid;
+
+  // Each individual category container
+  .category {
+    @extend .product;
+  }
+}

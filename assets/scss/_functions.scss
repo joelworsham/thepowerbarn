@@ -1,0 +1,17 @@
+// Color function
+@function light-or-dark-text($color) {
+  @if (lightness($color) > 50) {
+    @return $body-font-color; // Lighter backgorund, return dark color
+  } @else {
+    @return #fff; // Darker background, return light color
+  }
+}
+
+// Vertical align stuff
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

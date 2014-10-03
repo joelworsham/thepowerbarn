@@ -5,23 +5,23 @@
 
 // Body defaults
 body {
-  font-size: $font-size-base;
-  color: $color-body-font;
-  background-color: $color-body-back;
-  font-family: $font-body;
+  font-size: $base-font-size;
+  color: $body-font-color;
+  background-color: $body-background-color;
+  font-family: $body-font-family;
 }
 
 // Links
 a {
-  color: $color-link;
+  color: $link-color;
   &.invert {
-    color: $color-link-hover;
+    color: $link-hover-color;
     &:hover {
-      color: $color-link;
+      color: $link-color;
     }
   }
   &:hover {
-    color: $color-link-hover;
+    color: $link-hover-color;
     text-decoration: underline;
   }
 }

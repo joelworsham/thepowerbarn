@@ -1,0 +1,36 @@
+// A grid of products
+.product-grid {
+
+  // Each individual product container
+  .product {
+    border: 1px solid #ddd;
+//    height: 300px;
+    margin-bottom: 20px;
+    padding: 10px;
+
+    // The main image
+    .product-image {
+      text-align: center;
+
+      // All thumbnails SHOULD have this size, but if they don't, I'm making them
+      img {
+//        height: 150px;
+        width: 150px;
+      }
+    }
+  }
+
+  // The area under the product containing the info about the product
+  .product-info {
+    margin-top: 10px;
+    .product-title {
+      line-height: 1em;
+      height: 2em;
+      overflow: hidden;
+    }
+    .product-price {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+}

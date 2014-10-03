@@ -1,0 +1,104 @@
+// The main nav at the top of the site
+#site-header .site-navigation {
+  position: relative;
+  float: left;
+  width: 100%;
+
+  // Each brand item with its picture
+  .menu-item-brand {
+    float: left;
+    text-align: center;
+
+    // Cursor for the image
+    > p {
+      cursor: pointer;
+    }
+  }
+
+  // This menu is only 1 layer deep. So this refers to the "mega-menu" dropdown
+  .sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: $row-width;
+    z-index: 10;
+    background: #fff;
+    @include box-shadow(0, 0, 20px, rgba(#000, 0.2));
+    color: #222;
+    text-align: left;
+    display: none;
+
+    // Display when active
+    &.active {
+      display: block;
+    }
+  }
+
+  // Each grid area on the left for the lines
+  .line-section {
+    height: 150px;
+    width: 75px;
+    float: left;
+
+    // Add some space between the furthest right and the series'
+    &:last-of-type {
+      margin-right: 10px;
+    }
+
+    // Each grid item inside of the grid areas for the lines
+    .line {
+      height: 75px;
+      width: 75px;
+      text-align: center;
+      vertical-align: middle;
+      background-color: #fff;
+      border: 1px solid transparent;
+      @include transition(background-color, 300ms);
+
+      // Make sure the image is perfectly centered
+      img {
+        @include vertical-align;
+      }
+
+      // Hover effect
+      &:hover {
+        background-color: darken(#fff, 10%);
+      }
+
+      // Differentiate when active
+      &.active {
+        border-color: darken(#fff, 20%);
+      }
+    }
+  }
+
+  // Each area to the right of the line grid. Contains the series'
+  .series-section {
+    display: none;
+    height: 150px;
+    padding: 10px;
+
+    // Show only series sections that are currently active
+    &.active {
+      display: block;
+    }
+
+    // The title of the section (the line name)
+    .line-title {
+      font-size: 150%;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+    }
+
+    // Each individual series list item
+    .series {
+      float: left;
+      margin: 5px 0;
+
+      // The separators of every item
+      .sep {
+        margin: 0 10px;
+      }
+    }
+  }
+}

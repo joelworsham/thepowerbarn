@@ -1,0 +1,21 @@
+// Grid max width (in px)
+$row-width: rem-calc(1000) !global;
+
+// Default body properties
+$body-font-color: #222 !global;
+$body-background-color: #fff !global;
+$body-font-family: 'Arial', sans-serif !global;
+$base-font-size: 1em !global;
+
+// Default colors
+$primary-color: #aa2526 !global;
+$secondary-color: #868a8b !global;
+$alert-color: #f04124 !global;
+$success-color: #43AC6A !global;
+$warning-color: #f08a24 !global;
+$info-color: #a0d3e8 !global;
+$container-color: #222 !global;
+
+// Link colors
+$link-color: $primary-color !global;
+$link-hover-color: darken($link-color, 10%) !global;

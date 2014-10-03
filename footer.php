@@ -1,5 +1,20 @@
+<?php
+/**
+ * The footer for The Power Barn.
+ *
+ * @since ThePowerBarn 0.1
+ *
+ * @package WordPress
+ * @subpackage ThePowerBarn
+ * @category Basic Theme Files
+ */
+?>
+
+<?php // #content ?>
+</section>
+
 <footer id="site-footer" class="row">
-	<div class="footer-widgets columns large-12">
+	<div class="footer-widgets columns small-12">
 
 		<div class="row">
 			<?php for ( $i = 1; $i <= 4; $i++ ) { ?>
