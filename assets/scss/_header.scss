@@ -1,12 +1,10 @@
 // The topmost header of the site
 #site-header {
-  max-width: none;
-  background-color: $container-color;
-  color: light-or-dark-text($container-color);
 
-  // Direct underlying rows (that normally have no maxwidth)
-  > .columns > .row {
-    max-width: $row-width;
-    margin: 0 auto;
+  // The main container of the header
+  > .container > .row {
+    @include content-box;
+    margin-left: 0;
+    margin-right: 0;
   }
 }

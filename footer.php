@@ -2,12 +2,13 @@
 /**
  * The footer for The Power Barn.
  *
- * @since ThePowerBarn 0.1
+ * @since ThePowerBarn 0.1.0
  *
- * @package WordPress
- * @subpackage ThePowerBarn
- * @category Basic Theme Files
+ * @package ThePowerBarn
+ * @subpackage CoreThemeFiles
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 ?>
 
 <?php // #content ?>
@@ -16,11 +17,11 @@
 <footer id="site-footer" class="row">
 	<div class="footer-widgets columns small-12">
 
-		<div class="row">
+		<div class="container row">
 			<?php for ( $i = 1; $i <= 4; $i++ ) { ?>
-				<div class="footer-widget columns large-3 medium-6 small-12">
+				<ul class="footer-widget-box-<?php echo $i; ?> columns large-3 medium-6 small-12">
 					<?php dynamic_sidebar( "footer-$i" ); ?>
-				</div>
+				</ul>
 			<?php } ?>
 		</div>
 

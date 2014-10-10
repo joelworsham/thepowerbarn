@@ -1,21 +1,23 @@
 <?php
 
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 /**
  * Class ThePowerBarn_Transients
  *
  * Provides a clean way of using transients to replace all post gathering
  * queries. This can save some load time.
  *
- * @package WordPress
- * @subpackage ThePowerBarn 0.1
+ * @package ThePowerBarn
+ * @subpackage Transients
  *
- * @since ThePowerBarn 0.1
+ * @since ThePowerBarn 0.1.0
  */
 class ThePowerBarn_Transients extends ThePowerBarn {
 	/**
 	 * The main construct function.
 	 *
-	 * @since ThePowerBarn 0.1
+	 * @since ThePowerBarn 0.1.0
 	 */
 	function __construct() {
 		add_action( 'save_post', array( $this, 'manage_transients' ) );
@@ -28,15 +30,15 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	 * for the saving of queries in order to save some load time and reduce
 	 * database calls.
 	 *
-	 * @since ThePowerBarn 0.1
+	 * @since ThePowerBarn 0.1.0
 	 *
-	 * @param string $ID The unique ID of the transient.
 	 * @param array $args The arguments to send through get_posts().
 	 * @param bool /int $bypass Allows you to bypass the transient.
 	 *
 	 * @return mixed The object retrieved from the database.
 	 */
-	public static function get_posts( $args = null, $bypass =false ) {
+	public static function get_posts( $args = null, $bypass = false ) {
+
 		// See if our post type has been defined in the arguments
 		// Otherwise, set it to 'post' as default
 		if ( array_key_exists( 'post_type', $args ) ) {
@@ -63,7 +65,7 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 
 		// If bypass is set to true, skip getting the transient altogether
 		// Otherwise, get the transient and save it in $obj
-		if ( ! $bypass ) {
+		if ( ! $bypass && ( ! defined( 'WP_DEBUG' ) || WP_DEBUG === false ) ) {
 			$obj = get_transient( 'pb_' . $ID );
 		} else {
 			$obj = null;
@@ -87,9 +89,10 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	}
 
 	public static function get_terms( $ID, $taxonomies = array( 'category' ), $args = null, $post_type = null, $bypass = false ) {
+
 		// If bypass is set to true, skip getting the transient altogether
 		// Otherwise, get the transient and save it in $obj
-		if ( ! $bypass ) {
+		if ( ! $bypass && ( ! defined( 'WP_DEBUG' ) || WP_DEBUG === false ) ) {
 			$obj = get_transient( 'pb_' . $ID );
 		} else {
 			$obj = null;
@@ -120,7 +123,7 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	/**
 	 * Deletes transients when the post type updates in some way.
 	 *
-	 * @since ThePowerBarn 0.1
+	 * @since ThePowerBarn 0.1.0
 	 *
 	 * @param int $post_id Supplied ID of current post.
 	 */

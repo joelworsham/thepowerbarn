@@ -1,21 +1,55 @@
+// Global
+$body-bg: url("../images/main_back_@2x.png");
+// $body-font-color: $jet;
+// $body-font-family: $font-family-sans-serif;
+// $body-font-weight: $font-weight-normal;
+// $body-font-style: normal;
+
 // Grid max width (in px)
-$row-width: rem-calc(1000) !global;
+$row-width: rem-calc(1000);
+
+// Column gutter
+$column-gutter: rem-calc(15);
 
 // Default body properties
-$body-font-color: #222 !global;
-$body-background-color: #fff !global;
-$body-font-family: 'Arial', sans-serif !global;
-$base-font-size: 1em !global;
+$body-font-color: #666;
+$body-background-color: #fff;
+$body-font-family: 'Helvetica', sans-serif;
+$base-font-size: 1em;
 
 // Default colors
-$primary-color: #aa2526 !global;
-$secondary-color: #868a8b !global;
-$alert-color: #f04124 !global;
-$success-color: #43AC6A !global;
-$warning-color: #f08a24 !global;
-$info-color: #a0d3e8 !global;
-$container-color: #222 !global;
+$primary-color: #aa2526;
+$secondary-color: #868a8b;
+$alert-color: #f04124;
+$success-color: #8fae1b;
+$warning-color: #f08a24;
+$info-color: #a0d3e8;
+$container-color: #222;
 
-// Link colors
-$link-color: $primary-color !global;
-$link-hover-color: darken($link-color, 10%) !global;
+// Links
+$anchor-font-color: $primary-color;
+$anchor-font-color-hover: darken($anchor-font-color, 20%);
+
+// We use these to control header font styles
+$header-font-family: 'Arvo', serif;
+$header-font-weight: bold;
+$header-font-color: #333;
+//$header-line-height: 1.4;
+//$header-top-margin: .2rem;
+//$header-bottom-margin: .5rem;
+
+// Buttons
+$button-function-factor: -20%;
+$button-bg-color: $primary-color;
+$button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-factor);
+
+// Make the overrides more powerful
+button, .button {
+  background: $button-bg-color !important;
+  text-shadow: none !important;
+  border: none !important;
+
+  &:hover {
+    background: $button-bg-hover !important;
+  }
+}

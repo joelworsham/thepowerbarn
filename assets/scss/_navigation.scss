@@ -1,8 +1,97 @@
+// Top menu
+#site-top-navigation {
+  background: #333;
+  padding: 10px 0;
+  margin-bottom: $column-gutter / 2;
+  text-align: right;
+  color: #fff;
+
+  // Items
+  a {
+    color: #fff;
+    &:hover {
+      color: darken(#fff, 20%);
+    }
+  }
+
+  ul.menu {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+
+  li.menu-item {
+    margin: 0 5px;
+    padding: 0;
+    display: inline-block;
+    font-size: 0.8em;
+  }
+
+  // Extra items
+  // Home
+  li.menu-item.home a:before {
+    @include icon;
+    @extend .icon-home;
+    margin-right: 3px;
+  }
+  // Account
+  li.menu-item.account a:before {
+    @include icon;
+    @extend .icon-user;
+    margin-right: 3px;
+  }
+  // Cart
+  li.menu-item.cart a:before {
+    @include icon;
+    @extend .icon-cart3;
+    margin-right: 3px;
+  }
+  // Contact
+  li.menu-item.contact a:before {
+    @include icon;
+    @extend .icon-location;
+    margin-right: 3px;
+  }
+}
+
 // The main nav at the top of the site
-#site-header .site-navigation {
+#site-navigation {
   position: relative;
-  float: left;
-  width: 100%;
+
+  // Eliminate the default styling
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  p {
+    margin: 0 !important;
+  }
+
+  a {
+    color: $body-font-color;
+    &:hover {
+      color: $anchor-font-color-hover;
+    }
+  }
+
+  .nav-container {
+    @include content-box;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // The top UL list
+  .menu {
+    padding: 20px 0;
+    position: relative;
+  }
 
   // Each brand item with its picture
   .menu-item-brand {
@@ -20,10 +109,11 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: $row-width;
+    margin-top: 20px;
+    width: 100%;
     z-index: 10;
     background: #fff;
-    @include box-shadow(0, 0, 20px, rgba(#000, 0.2));
+    box-shadow: 0 10px 20px rgba(#000, 0.4);
     color: #222;
     text-align: left;
     display: none;
@@ -31,6 +121,18 @@
     // Display when active
     &.active {
       display: block;
+    }
+  }
+
+  .brand-link {
+    position: absolute;
+    bottom: 0;
+    right: 5px;
+    font-size: 0.9em;
+    vertical-align: middle;
+
+    span {
+      vertical-align: middle;
     }
   }
 
@@ -53,7 +155,8 @@
       vertical-align: middle;
       background-color: #fff;
       border: 1px solid transparent;
-      @include transition(background-color, 300ms);
+      cursor: pointer;
+      transition: background-color 300ms;
 
       // Make sure the image is perfectly centered
       img {
@@ -67,7 +170,7 @@
 
       // Differentiate when active
       &.active {
-        border-color: darken(#fff, 20%);
+        background-color: darken(#fff, 15%);
       }
     }
   }
@@ -85,15 +188,15 @@
 
     // The title of the section (the line name)
     .line-title {
+      @extend h2;
       font-size: 150%;
-      font-weight: bold;
       margin: 0 0 10px 0;
     }
 
     // Each individual series list item
     .series {
       float: left;
-      margin: 5px 0;
+      margin: 0;
 
       // The separators of every item
       .sep {

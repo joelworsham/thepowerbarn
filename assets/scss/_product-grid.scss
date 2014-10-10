@@ -1,21 +1,111 @@
+$product-button-color: #333;
+$product-button-height: 28px;
+$product-button-grad1: #a1d149;
+$product-button-grad2: darken($product-button-grad1, 7%);
+$product-title-font-size: 0.8em;
+$product-title-line-height: 1.2em;
+
+// Styles each product box
+@mixin product-box {
+  padding: 10px;
+  position: relative;
+}
+
+// Displays the button and price
+@mixin product-action {
+
+  // The container
+  .product.woocommerce {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    background-color: #fff;
+    text-align: center;
+    color: #555;
+  }
+
+  // Action button
+  a.button {
+    position: relative;
+    float:right;
+    border-radius: 0;
+    box-shadow: none;
+    border: none !important;
+    background: $product-button-color !important;
+    color: #fff;
+    text-shadow: none;
+    height: $product-button-height;
+    width: 100%;
+
+    // Added
+    &.added {
+      text-indent: -9999px;
+      &:before {
+        right: auto;
+        left: 50%;
+        margin-left: -8px;
+      }
+    }
+
+    // Hover
+    &:hover {
+      background: darken($product-button-color, 10%) !important;
+    }
+  }
+
+  // View Cart
+  .added_to_cart {
+    position: absolute;
+    bottom: $product-button-height;
+    left: 0;
+    right: 0;
+    background: #fff;
+  }
+
+  // The orig price in an on-sale item
+  del {
+    color: #aaa;
+  }
+}
+
 // A grid of products
 .product-grid {
 
+  // The action area
+  @include product-action;
+
+  // Prevent last item from floating right
+  .columns {
+    float: left !important;
+  }
+
   // Each individual product container
-  .product {
-    border: 1px solid #ddd;
-//    height: 300px;
-    margin-bottom: 20px;
-    padding: 10px;
+  .product-box {
+    @include product-box;
+    @include content-box;
+    border-bottom: none;
+
+    a.added_to_cart {
+      color: $body-font-color;
+      &:hover {
+        color: $anchor-font-color-hover;
+      }
+    }
 
     // The main image
     .product-image {
       text-align: center;
+    }
 
-      // All thumbnails SHOULD have this size, but if they don't, I'm making them
-      img {
-//        height: 150px;
-        width: 150px;
+    // On sale
+    &.on-sale {
+      @include corner-icon();
+      &:before {
+        content: '$';
+        font-weight: bold;
+        left: 6px;
       }
     }
   }
@@ -24,13 +114,35 @@
   .product-info {
     margin-top: 10px;
     .product-title {
-      line-height: 1em;
-      height: 2em;
-      overflow: hidden;
+      font-size: $product-title-font-size;
+      line-height: $product-title-line-height;
+      margin-bottom: 4.4em;
+      color: $body-font-color
     }
     .product-price {
       margin-top: 10px;
       text-align: center;
     }
+  }
+}
+
+// A grid of categories
+.category-grid {
+
+  // Each individual category container
+  .category {
+    @include product-box;
+    @include content-box;
+  }
+
+  // Vertically center them
+  img {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .product-title {
+    text-align: center;
   }
 }

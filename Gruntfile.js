@@ -12,31 +12,37 @@ module.exports = function (grunt) {
                 livereload: true
             },
             sass: {
-                files: ['./assets/scss/**/*.scss'],
+                files: ['assets/scss/**/*.scss'],
                 tasks: ['sass', 'autoprefixer']
             },
             js: {
-                files: ['./assets/js/source/*.js'],
-                tasks: ['uglify:dist']
-            },
-            jsdeps: {
-                files: ['./assets/js/source/deps/*.js'],
-                tasks: ['uglify:deps']
+                files: ['assets/js/source/*.js'],
+                tasks: ['uglify']
             },
             livereload: {
-                files: ['./**/*.html', './**/*.php', './assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+                files: ['**/*.html', '**/*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
             }
         },
 
         // SASS
         sass: {
+            options: {
+                imagePath: 'assets/images'
+            },
             dist: {
                 options: {
-                    outputStyle: 'expanded',
-                    imagePath: './assets/images'
+                    outputStyle: 'compressed'
                 },
                 files: {
-                    './assets/css/frontend.main.min.css': './assets/scss/frontend.main.scss'
+                    'assets/css/thepowerbarn.main.min.css': 'assets/scss/main.scss'
+                }
+            },
+            dev: {
+                options: {
+                    outputStyle: 'expanded'
+                },
+                files: {
+                    'assets/css/thepowerbarn.main.css': 'assets/scss/main.scss'
                 }
             }
         },
@@ -46,32 +52,31 @@ module.exports = function (grunt) {
             dist: {
                 expand: true,
                 flatten: true,
-                src: './assets/css/**/*.css',
-                dest: './assets/css',
+                src: 'assets/css/**/*.css',
+                dest: 'assets/css',
                 options: {
                     browsers: ['last 2 version', 'ie 8', 'ie 9']
                 }
             }
         },
 
-        // Uglify and concatenate
+        // Minify and concatenate scripts
         uglify: {
             dist: {
                 files: {
-                    './assets/js/pb.main.min.js': [
-                        './assets/js/source/*.js'
-                    ]
-                }
-            },
-            deps: {
-                files: {
-                    './assets/js/pb.deps.min.js': [
-                        './assets/js/source/deps/*.js'
+                    'assets/js/thepowerbarn.min.js': [
+                        'assets/js/source/deps/modernizer.js',
+                        'assets/js/source/deps/jquery.cookie.js',
+                        'assets/js/source/deps/placeholder.js',
+                        'assets/js/source/deps/fastclick.js',
+                        'assets/js/source/deps/foundation/foundation.js',
+                        'assets/js/source/deps/foundation/foundation.equalizer.js',
+                        'assets/js/source/deps/foundation/foundation.accordion.js',
+                        'assets/js/source/*.js'
                     ]
                 }
             }
         }
-
     });
 
     // Register our main task

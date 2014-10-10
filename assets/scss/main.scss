@@ -1,25 +1,31 @@
+@import "foundation/functions";
+@import "settings";
+
 // Foundation
 @import "foundation/components/grid";
 @import "foundation/components/forms";
 @import "foundation/components/buttons";
+@import "foundation/components/type";
+@import "foundation/components/visibility";
 
 // Theme
 // Pre-requisites
-@import "settings";
-@import "functions";
+@import "icomoon";
 @import "mixins";
-@import "reset";
 @import "defaults";
+@import "classes";
 
 // Content Areas
+@import "page";
 @import "header";
-@import "content";
 @import "footer";
 
 // Pages
 @import "home";
+@import "single-product";
 
 // Elements
 @import "product-grid";
-@import "category-grid";
 @import "navigation";
+@import "sidebars";
+@import "search";

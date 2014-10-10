@@ -2,18 +2,25 @@
 /**
  * The header for The Power Barn.
  *
- * @since ThePowerBarn 0.1
+ * @since ThePowerBarn 0.1.0
  *
- * @package WordPress
- * @subpackage ThePowerBarn
- * @category Basic Theme Files
+ * @package ThePowerBarn
+ * @subpackage Core Theme Files
  */
+
+// TODO Gray and red logo, not white and red.
+
+// Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 global $ThePowerBarn;
 ?>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--suppress CheckImageSize -->
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns#">
 <head profile="http://gmpg.org/xfn/11">
 
@@ -23,25 +30,41 @@ global $ThePowerBarn;
 	<?php wp_head(); ?>
 </head>
 
-<body>
-<div id="wrapper" class="<?php echo $ThePowerBarn->wrapper_classes; ?>">
+<body <?php body_class(); ?>>
+<div id="wrapper">
+
+	<nav id="site-top-navigation">
+		<div class="row">
+			<div class="columns small-12">
+				<?php pb_partial( 'top-nav' ); ?>
+			</div>
+		</div>
+	</nav>
 
 	<header id="site-header" class="row">
-		<div class="columns small-12">
-			<div class="row logo-area">
-				<div class="columns small-12">
-					<div class="site-logo">
-						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.jpg" alt="The Power Barn" />
-					</div>
+		<div class="container columns small-12">
+			<div class="row">
+				<div class="site-logo columns small-12 medium-6">
+					<a href="<?php echo home_url(); ?>">
+						<img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.png"
+						     alt="The Power Barn" width="158" height="111"/>
+					</a>
 				</div>
-			</div>
-
-			<div class="row menu-area">
-				<div class="columns small-12">
-					<?php get_template_part( '/inc/navigation' ); ?>
+				<div class="site-address columns small-12 medium-6 alignright">
+					<span class="icon-phone"></span> Mason: (517) 694-9501 Jackson: (517) 782-3319
+				</div>
+				<div class="site-search columns small-12">
+					<?php get_search_form(); ?>
 				</div>
 			</div>
 		</div>
 	</header>
+
+
+	<nav id="site-navigation" class="row">
+		<div class="columns small-12">
+			<?php pb_partial( 'navigation' ); ?>
+		</div>
+	</nav>
 
 	<section id="content" class="row">

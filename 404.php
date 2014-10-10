@@ -2,12 +2,13 @@
 /**
  * The 404 for products for The Power Barn.
  *
- * @since ThePowerBarn 0.1
+ * @since ThePowerBarn 0.1.0
  *
- * @package WordPress
- * @subpackage ThePowerBarn
- * @category Basic Theme Files
+ * @package ThePowerBarn
+ * @subpackage Core Theme Files
  */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 get_header();
 ?>

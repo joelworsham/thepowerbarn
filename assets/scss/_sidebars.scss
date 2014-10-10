@@ -1,0 +1,80 @@
+// Product archive
+#product-archive-sidebar {
+
+  // Forces scrollbars to always remain visible
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  }
+
+  .container {
+    @include content-box;
+    padding: 0;
+  }
+
+  .widgets {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .widget {
+    margin: 20px 0;
+
+    // Filtering
+    &.widget_layered_nav {
+      margin: 0;
+
+      // Chosen filter
+      li.chosen a {
+        border: none;
+        background: none;
+        color: $anchor-font-color;
+        font-weight: bold;
+
+        // Hover
+        &:hover {
+          color: $anchor-font-color-hover;
+        }
+      }
+
+      // The title
+      .filter-title {
+        background: #333;
+        color: #fff;
+        font-size: 1.3em;
+        margin: 0;
+        padding: 0 10px;
+      }
+
+      // The list of filters
+      ul {
+        max-height: 300px;
+        overflow-y: auto;
+        padding: 0 10px;
+        margin: 0;
+        li {
+          line-height: 25px; // Makes them not cut off at bottom
+          font-size: 0.8em;
+          padding: 0;
+          margin: 0;
+
+          // Cut off long filters with an ellipsis (...)
+          a {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            max-width: 90%;
+            max-height: 25px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}

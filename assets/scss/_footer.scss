@@ -3,10 +3,29 @@
   max-width: none;
   background-color: $container-color;
   color: light-or-dark-text($container-color);
+  margin-top: $column-gutter / 2;
+
+  .container {
+    padding: 20px $column-gutter / 2;
+  }
 
   // Direct underlying rows (that normally have no maxwidth)
   > .columns > .row {
     max-width: $row-width;
     margin: 0 auto;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  a:hover {
+    color: lighten($anchor-font-color, 10%);
+  }
+
+  .footer-widget-box-4 {
+    text-align: right;
   }
 }

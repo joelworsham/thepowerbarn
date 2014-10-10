@@ -1,0 +1,185 @@
+// Targets single-product pages only. All scss goes in this
+body.single-product.woocommerce-page {
+
+  // Overrides and additions
+  .single-product-view {
+    .images {
+      @include content-box;
+      width: 100% !important;
+
+      img {
+        box-shadow: none !important;
+      }
+    }
+
+    // On sale!
+    &.sale {
+      .onsale {
+        display: none;
+      }
+      .images {
+        position: relative;
+        @include corner-icon();
+        &:before {
+          content: '$';
+          left: 6px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .price {
+      color: $body-font-color !important;
+      font-size: 3em !important;
+      font-weight: bold;
+    }
+
+    .summary {
+      @include content-box;
+      width: 100% !important;
+      text-align: center;
+
+      p {
+        margin: 0 !important;
+      }
+
+      // Spacing between elements
+      > div, > form {
+        margin: 10px 0 !important;
+      }
+
+      // Left align the description div (no classes on this div)
+      div[itemprop="description"] {
+        text-align: left;
+      }
+
+      // Add to cart button area
+      $add-to-cart-form-height: 50px;
+      form.cart {
+        display: inline-block;
+        height: $add-to-cart-form-height;
+
+        // Needed to override WooCommerce button styles
+        button.button.alt {
+          @include button;
+          height: $add-to-cart-form-height !important;
+          padding: 0 50px !important;
+          line-height: $add-to-cart-form-height !important;
+        }
+
+        // Count
+        .quantity {
+          height: $add-to-cart-form-height;
+          margin: 0 !important;
+
+          input {
+            border-radius: 0 !important;
+          }
+
+          .input-text {
+            height: $add-to-cart-form-height !important;
+            font-size: 1.5em;
+          }
+
+          input[type="button"] {
+            height: $add-to-cart-form-height / 2 !important;
+            outline: none !important;
+          }
+        }
+      }
+
+      // The main product title
+      h1 {
+        font-size: 2em;
+        line-height: 1em;
+      }
+    }
+
+    .woocommerce-tabs {
+      @include content-box;
+
+      // Override the tabs
+      ul.tabs {
+
+        li {
+          border-radius: 0 !important;
+          background: #eee !important;
+          box-shadow: none !important;
+
+          &:before, &:after {
+            display: none;
+          }
+
+          a {
+            text-shadow: none !important;
+          }
+
+          &.active {
+            background: #fff !important;
+          }
+        }
+      }
+
+      h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    .panel.entry-content {
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      td, th {
+        border: none;
+      }
+
+      tr.alt {
+        background: #f1f1f1;
+      }
+    }
+  }
+
+  // Override the submit button in the reviews tab
+  #respond input#submit {
+    @include button;
+    background: $button-bg-color !important;
+    text-shadow: none !important;
+    border: none !important;
+
+    &:hover {
+      background: $button-bg-hover !important;
+    }
+  }
+
+  .single-product-title {
+    @include section-title;
+  }
+}
+
+// Added to cart message
+.woocommerce-page .woocommerce-message {
+  @include content-box;
+  @include corner-icon( checkmark );
+
+  // Causes everything to fit properly
+  float: left;
+  width: 100%;
+
+  padding-left: 20px !important;
+  border-top: none !important;
+  border-color: $success-color !important;
+  border-radius: 0 !important;
+
+  a.button {
+    @include button;
+    margin: 0 0 10px 0 !important;
+    background: $success-color !important;
+
+    &:hover {
+      background: darken($success-color, 10%) !important;
+    }
+  }
+}
