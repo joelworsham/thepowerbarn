@@ -89,7 +89,6 @@
 
   // The top UL list
   .menu {
-    padding: 20px 0;
     position: relative;
   }
 
@@ -160,6 +159,7 @@
 
       // Make sure the image is perfectly centered
       img {
+        position: relative;
         @include vertical-align;
       }
 

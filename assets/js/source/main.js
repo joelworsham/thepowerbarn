@@ -26,23 +26,25 @@ var PB;
                 }
             });
 
-            this.force_search_active();
+            this.sticky_footer();
         },
         /**
-         * Forces the search form to be active when it's input is active.
+         * Keeps the footer at the bottom of the screen isn't tall enough.
          *
-         * @since ThePowerBarn 0.1.0
+         * @since ThePowerBar 0.1.0
          */
-        force_search_active: function () {
-            var search_input = $('.searchform').find('input');
+        sticky_footer: function () {
+            var footer = $("#site-footer"),
+                pos = footer.position(),
+                height = $(window).height();
 
-           search_input.focus(function () {
-                $(this).closest('.searchform').addClass('focus');
-            });
-
-           search_input.focusout(function () {
-                $(this).closest('.searchform').removeClass('focus');
-            });
+            height = height - pos.top;
+            height = height - footer.height();
+            if (height > 0) {
+                footer.css({
+                    'margin-top': height + 'px'
+                });
+            }
         }
     };
 

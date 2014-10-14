@@ -45,11 +45,11 @@ $button-bg-hover: scale-color($button-bg-color, $lightness: $button-function-fac
 
 // Make the overrides more powerful
 button, .button {
-  background: $button-bg-color !important;
-  text-shadow: none !important;
-  border: none !important;
+  background: $button-bg-color;
+  text-shadow: none;
+  border: none;
 
   &:hover {
-    background: $button-bg-hover !important;
+    background: $button-bg-hover;
   }
 }

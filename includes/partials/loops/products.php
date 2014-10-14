@@ -1,5 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 global $post, $classes;
 
@@ -18,6 +20,9 @@ if ( empty( $classes ) ) {
 
 <div class="columns <?php echo implode( ' ', $classes ); ?>">
 	<div class="product-box<?php echo $sale ? ' on-sale' : ''; ?>" data-equalizer-watch>
+		<?php if ( $sale ) : ?>
+			<div class="product-sale"></div>
+		<?php endif; ?>
 		<div class="product-image">
 			<a href="<?php the_permalink(); ?>">
 				<?php

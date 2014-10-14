@@ -97,6 +97,11 @@ class ThePowerBarn {
 					'deps' => array( 'pb-foundation' ),
 				),
 				array(
+					'name'   => 'foundation-alert',
+					'filename' => 'deps/foundation/foundation.alert',
+					'deps' => array( 'pb-foundation' ),
+				),
+				array(
 					'name'   => 'main',
 					'filename' => 'main',
 					'deps' => array( 'pb-foundation' ),
@@ -105,6 +110,12 @@ class ThePowerBarn {
 				array(
 					'name'   => 'navigation',
 					'filename' => 'navigation',
+					'deps' => array( 'pb-main' ),
+					'footer'   => true,
+				),
+				array(
+					'name'   => 'search',
+					'filename' => 'search',
 					'deps' => array( 'pb-main' ),
 					'footer'   => true,
 				),
@@ -164,6 +175,9 @@ class ThePowerBarn {
 
 		// Disable WooCommerce styling
 		add_filter( 'woocommerce_enqueue_styles', '__return_false' );
+
+		// Change remove product button from the cart page
+		add_filter( 'woocommerce_cart_item_remove_link', array( $this, 'remove_product_link' ), 10, 2 );
 	}
 
 	/**
@@ -317,6 +331,11 @@ class ThePowerBarn {
 		}
 
 		return $product_terms;
+	}
+
+	public function remove_product_link( $html, $cart_item_key ) {
+
+		return sprintf( '<a href="%s" class="remove" title="Remove from cart"></a>', esc_url( WC()->cart->get_remove_url( $cart_item_key ) ) );
 	}
 
 	public function delete_product_terms_transient( $post_ID ) {

@@ -7,11 +7,13 @@
 @import "foundation/components/buttons";
 @import "foundation/components/type";
 @import "foundation/components/visibility";
+@import "foundation/components/tabs";
+@import "foundation/components/alert-boxes";
 
 // Theme
 // Pre-requisites
 @import "icomoon";
-@import "mixins";
+@import "animations";
 @import "defaults";
 @import "classes";
 
@@ -23,6 +25,7 @@
 // Pages
 @import "home";
 @import "single-product";
+@import "cart-checkout";
 
 // Elements
 @import "product-grid";

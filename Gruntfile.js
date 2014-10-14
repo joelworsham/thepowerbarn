@@ -72,6 +72,7 @@ module.exports = function (grunt) {
                         'assets/js/source/deps/foundation/foundation.js',
                         'assets/js/source/deps/foundation/foundation.equalizer.js',
                         'assets/js/source/deps/foundation/foundation.accordion.js',
+                        'assets/js/source/deps/foundation/foundation.alert.js',
                         'assets/js/source/*.js'
                     ]
                 }

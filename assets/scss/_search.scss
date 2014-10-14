@@ -1,76 +1,83 @@
 // The basic search form
-.site-search form {
+.site-search {
 
-  margin: 10px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 100%;
+  // Make the space above and below symmetric
+  margin-top: 10px;
 
-  .select-container {
+  .search-form {
     position: relative;
-    width: 55px;
-    display: inline-block;
-    float: left;
-    font-size: 13px;
-
-    .search-options {
-      background: #FAFAFA !important;
-      border: 1px solid #ccc !important;
-      height: 35px;
-      width: 100%;
-      margin: 0;
-      position: relative;
-      font-size: 13px;
-    }
-
-    .select-arrow {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      margin-top: -3px;
-      border-top: 6px solid #999;
-      border-left: 6px solid transparent;
-      border-right: 6px solid transparent;
-    }
-
-    .width-temp {
-      display: none;
-      white-space: nowrap;
-    }
-  }
-
-  .search-box {
-    display: inline-block;
-    height: 35px;
-    box-shadow: none;
-    margin: 0;
-    border-width: 1px 0;
+    margin: 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
     width: 100%;
-  }
 
-  .search-icon {
-    position: absolute;
-    right: 0;
-    background: #FAFAFA !important;
-    border: 1px solid #ccc !important;
-    height: 35px;
-    width: 50px;
-    padding: 0;
-    margin: 0;
-
-    // The search icon
-    span:before {
+    .select-container {
       position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #888;
-    }
-  }
+      width: 55px;
+      display: inline-block;
+      float: left;
+      font-size: 13px;
 
-  // Triggered by JS
-  &.focus {
-    .icon-search:before {
-      color: #333;
+      .search-options {
+        background: #FAFAFA;
+        border: 1px solid #ccc;
+        height: 35px;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        font-size: 13px;
+      }
+
+      .select-arrow {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+        border-top: 6px solid #999;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+      }
+
+      .width-temp {
+        display: none;
+        white-space: nowrap;
+      }
+    }
+
+    .search-box {
+      display: inline-block;
+      height: 35px;
+      box-shadow: none;
+      margin: 0;
+      border-width: 1px 0;
+      width: 100%;
+    }
+
+    .search-icon {
+      position: absolute;
+      background: #FAFAFA;
+      border: 1px solid #ccc;
+      right: 0;
+      height: 35px;
+      width: 50px;
+      padding: 0;
+      margin: 0;
+      outline: none !important;
+
+      // The search icon
+      span:before {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #888;
+      }
+    }
+
+    // Triggered by JS
+    &.focus {
+      .icon-search:before {
+        color: #333;
+      }
     }
   }
 }

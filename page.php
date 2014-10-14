@@ -17,6 +17,8 @@ the_post();
 <div class="columns small-12">
 	<h2 class="section-title"><?php the_title(); ?></h2>
 
+	<div class="clear"></div>
+
 	<div class="page-content">
 		<?php the_content(); ?>
 	</div>

@@ -13,8 +13,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+$term            = get_term_by( 'name', 'All Products', 'product_cat' );
+$parent_category = $term->term_id;
+
 $categories = get_terms( 'product_cat', array(
-	'parent' => 6,
+	'parent' => $parent_category,
 ) );
 
 // Get the current category
@@ -23,7 +26,7 @@ $current_category = $term != 0 ? get_term( $term, 'product_cat' ) : 'All';
 $current_category = $current_category != 'All' ? $current_category->name : 'All';
 ?>
 
-<form action="<?php echo home_url(); ?>" method="get">
+<form action="<?php echo home_url(); ?>" method="get" class="search-form">
 	<div class="select-container">
 		<select class="search-options" name="cat">
 			<option value="0" <?php selected( 0, $term ); ?>>All</option>

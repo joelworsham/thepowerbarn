@@ -8,6 +8,9 @@
  * @subpackage WooCommerce Template Overrides
  */
 
+// TODO Hover implies to view more
+// Related not clickable
+
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

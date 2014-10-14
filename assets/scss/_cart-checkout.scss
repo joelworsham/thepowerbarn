@@ -1,0 +1,156 @@
+.shop_table {
+  width: 100%;
+  text-align: left;
+  border: 0 solid #ddd;
+  border-right-width: 1px;
+  border-left-width: 1px;
+  border-collapse: collapse;
+
+  td, th {
+    border: 0 solid #ddd;
+    border-top-width: 1px;
+    padding: 5px;
+  }
+
+  tr:last-of-type {
+    th, td {
+      border-width: 1px 0;
+    }
+  }
+}
+
+.woocommerce-cart {
+  .shop_table {
+
+    .remove:before {
+      @include icon;
+      @extend .icon-close;
+    }
+
+    // Bottom row of the table
+    tr:last-of-type {
+      td {
+        padding: 10px;
+
+        input {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+
+        .coupon {
+          float: left;
+
+          input {
+            margin-right: 10px;
+          }
+
+          label {
+            display: none;
+          }
+
+          input[type="text"] {
+            float: left;
+            width: auto;
+          }
+        }
+
+        input[type="submit"] {
+          float: right;
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  .cart-collaterals {
+    text-align: right;
+
+    .cart_totals {
+      float: right;
+    }
+
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+
+    td {
+      width: 200px;
+      max-width: 50%;
+      border-bottom: 1px solid #ddd;
+      padding: 5px 0;
+    }
+
+    th {
+      border-bottom: 1px solid #ddd;
+      padding: 5px 0;
+    }
+
+    tr:last-of-type {
+      th, td {
+        border: none;
+      }
+    }
+  }
+
+  .shipping_calculator {
+    clear: both;
+    padding-top: 10px;
+    float: right;
+    max-width: 300px;
+    text-align: left;
+
+    p {
+      margin: 0;
+    }
+
+    button[type="submit"] {
+      float: right;
+    }
+
+    h2 {
+      font-size: 1.5em;
+
+      a:after {
+        @include icon;
+        content: '\e724';
+        vertical-align: middle;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.woocommerce-checkout {
+
+  label.checkbox {
+    display: inline;
+  }
+
+  input[type="checkbox"] {
+    margin: 0;
+  }
+
+  tr *:first-of-type {
+    border-right-width: 1px !important;
+    width: 70%;
+  }
+
+  .col2-set {
+    @extend .row;
+    width: 100% !important;
+
+    .col-1, .col-2 {
+      @extend .columns;
+      @extend .small-12;
+      @extend .medium-6;
+    }
+  }
+
+  .payment_methods {
+    margin: 10px 0;
+    padding: 0;
+    list-style: none;
+  }
+}

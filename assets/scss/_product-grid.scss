@@ -7,7 +7,7 @@ $product-title-line-height: 1.2em;
 
 // Styles each product box
 @mixin product-box {
-  padding: 10px;
+  padding: 10px 10px 30px 10px;
   position: relative;
 }
 
@@ -32,26 +32,66 @@ $product-title-line-height: 1.2em;
     float:right;
     border-radius: 0;
     box-shadow: none;
-    border: none !important;
-    background: $product-button-color !important;
+    border: none;
+    background: $product-button-color;
     color: #fff;
     text-shadow: none;
     height: $product-button-height;
+    line-height: $product-button-height;
     width: 100%;
+    margin: 0;
+    padding: 0;
 
     // Added
     &.added {
       text-indent: -9999px;
       &:before {
+        @include icon;
+        @extend .icon-checkmark;
+        line-height: $product-button-height;
+        text-indent: 0;
+        position: absolute;
         right: auto;
         left: 50%;
         margin-left: -8px;
       }
     }
 
+    // Loading
+    &.loading {
+      &:before {
+        @include icon;
+        @extend .icon-spinner6;
+        animation: spinner 1s cubic-bezier(.27,.44,.84,.63) infinite;
+        height: 100%;
+        width: 50px;
+        position: absolute;
+        left: 50%;
+        margin-left: -25px;
+
+        // Center it on the screen vertically and horizontally
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-direction: column;
+        z-index: 2;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: rgba(#000,0.7);
+        z-index: 1;
+      }
+    }
+
     // Hover
     &:hover {
-      background: darken($product-button-color, 10%) !important;
+      background: darken($product-button-color, 10%);
     }
   }
 
@@ -62,6 +102,12 @@ $product-title-line-height: 1.2em;
     left: 0;
     right: 0;
     background: #fff;
+    &:after {
+      @include icon;
+      content: '\e732';
+      margin-left: 5px;
+      vertical-align: middle;
+    }
   }
 
   // The orig price in an on-sale item
@@ -83,8 +129,8 @@ $product-title-line-height: 1.2em;
 
   // Each individual product container
   .product-box {
-    @include product-box;
     @include content-box;
+    @include product-box;
     border-bottom: none;
 
     a.added_to_cart {
@@ -100,12 +146,13 @@ $product-title-line-height: 1.2em;
     }
 
     // On sale
-    &.on-sale {
+    .product-sale {
       @include corner-icon();
       &:before {
         content: '$';
         font-weight: bold;
         left: 6px;
+        top: -30px;
       }
     }
   }
@@ -116,7 +163,6 @@ $product-title-line-height: 1.2em;
     .product-title {
       font-size: $product-title-font-size;
       line-height: $product-title-line-height;
-      margin-bottom: 4.4em;
       color: $body-font-color
     }
     .product-price {
@@ -128,6 +174,8 @@ $product-title-line-height: 1.2em;
 
 // A grid of categories
 .category-grid {
+
+  @include product-action;
 
   // Each individual category container
   .category {
@@ -142,7 +190,23 @@ $product-title-line-height: 1.2em;
     transform: translateY(-50%);
   }
 
+  p {
+    margin-bottom: 5px;
+  }
+
   .product-title {
     text-align: center;
+  }
+
+  .product-description {
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .button {
+    position: absolute !important;
+    bottom: -10px;
+    left: 0;
+    right: 0;
   }
 }

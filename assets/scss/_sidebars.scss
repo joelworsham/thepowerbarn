@@ -9,8 +9,8 @@
 
   ::-webkit-scrollbar-thumb {
     border-radius: 4px;
-    background-color: rgba(0,0,0,.5);
-    -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+    background-color: rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
   }
 
   .container {
@@ -38,10 +38,23 @@
         color: $anchor-font-color;
         font-weight: bold;
 
+        &:before {
+          @include icon;
+          @extend .icon-close;
+          margin-right: 10px;
+          font-size: 0.8em;
+        }
+
         // Hover
         &:hover {
           color: $anchor-font-color-hover;
         }
+
+      }
+
+      .count {
+        float: right;
+        font-size: 1em;
       }
 
       // The title
@@ -72,6 +85,7 @@
             max-width: 90%;
             max-height: 25px;
             white-space: nowrap;
+            display: inline-block;
           }
         }
       }
