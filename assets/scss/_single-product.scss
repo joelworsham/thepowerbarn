@@ -22,12 +22,10 @@ body.single-product.woocommerce-page {
       }
       .images {
         position: relative;
-        @include corner-icon();
-        &:before {
-          content: '$';
-          left: 6px;
-          font-weight: bold;
-        }
+        border-color: $success-color;
+      }
+      .summary {
+        border-color: $success-color;
       }
     }
 

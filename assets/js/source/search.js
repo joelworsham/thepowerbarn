@@ -51,7 +51,7 @@ var PB_Search;
                 if (input === '' ) {
                     message = 'Please enter something.';
                     valid = false;
-                } else if (!input.match(/^[a-zA-Z0-9]*$/)) {
+                } else if (!input.match(/^[a-zA-Z0-9\s]*$/)) {
                     message = 'Please only use regular characters.';
                     valid = false;
                 }

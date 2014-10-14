@@ -2793,7 +2793,7 @@ th.hide-for-touch {
 .icon-contrast:before {
   content: "\e6cd"; }
 
-.icon-star:before, body.single-product.woocommerce-page .single-product-view.sale .images:before, .product-grid .product-box .product-sale:before {
+.icon-star:before {
   content: "\e6ce"; }
 
 .icon-star2:before {
@@ -3710,47 +3710,9 @@ body.single-product.woocommerce-page .single-product-view.sale del {
   color: #bbb; }
 body.single-product.woocommerce-page .single-product-view.sale .images {
   position: relative;
-  background: transparent;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 0;
-  height: 0;
-  padding: 0;
-  margin: 0;
-  border-style: solid;
-  border-width: 42px 42px 0 0;
-  border-color: #8fae1b transparent transparent transparent;
-  border-radius: 0;
-  z-index: 1; }
-  body.single-product.woocommerce-page .single-product-view.sale .images:before {
-    font-family: 'icomoon';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #fff;
-    position: absolute;
-    left: 3px;
-    top: 12px;
-    background: transparent;
-    line-height: 0;
-    margin: 0;
-    padding: 0;
-    box-shadow: none;
-    font-size: 20px;
-    width: 0;
-    height: 0;
-    z-index: 2; }
-  body.single-product.woocommerce-page .single-product-view.sale .images:before {
-    content: '$';
-    left: 6px;
-    font-weight: bold; }
+  border-color: #8fae1b; }
+body.single-product.woocommerce-page .single-product-view.sale .summary {
+  border-color: #8fae1b; }
 body.single-product.woocommerce-page .single-product-view .price {
   color: #666;
   font-size: 3em;
@@ -4278,55 +4240,14 @@ body.single-product.woocommerce-page .single-product-title {
   padding: 10px 10px 30px 10px;
   position: relative;
   border-bottom: none; }
+  .product-grid .product-box.on-sale a.button {
+    background: #8fae1b; }
   .product-grid .product-box a.added_to_cart {
     color: #666; }
     .product-grid .product-box a.added_to_cart:hover {
       color: #561314; }
   .product-grid .product-box .product-image {
     text-align: center; }
-  .product-grid .product-box .product-sale {
-    background: transparent;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    border-style: solid;
-    border-width: 42px 42px 0 0;
-    border-color: #8fae1b transparent transparent transparent;
-    border-radius: 0;
-    z-index: 1; }
-    .product-grid .product-box .product-sale:before {
-      font-family: 'icomoon';
-      speak: none;
-      font-style: normal;
-      font-weight: normal;
-      font-variant: normal;
-      text-transform: none;
-      line-height: 1;
-      /* Better Font Rendering =========== */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      color: #fff;
-      position: absolute;
-      left: 3px;
-      top: 12px;
-      background: transparent;
-      line-height: 0;
-      margin: 0;
-      padding: 0;
-      box-shadow: none;
-      font-size: 20px;
-      width: 0;
-      height: 0;
-      z-index: 2; }
-    .product-grid .product-box .product-sale:before {
-      content: '$';
-      font-weight: bold;
-      left: 6px;
-      top: -30px; }
 .product-grid .product-info {
   margin-top: 10px; }
   .product-grid .product-info .product-title {
@@ -4336,6 +4257,37 @@ body.single-product.woocommerce-page .single-product-title {
   .product-grid .product-info .product-price {
     margin-top: 10px;
     text-align: center; }
+
+.product-sale {
+  background: transparent;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  border-style: solid;
+  border-width: 42px 42px 0 0;
+  border-color: #8fae1b transparent transparent transparent;
+  border-radius: 0;
+  z-index: 1; }
+  .product-sale:before {
+    color: #fff;
+    position: absolute;
+    content: '$';
+    font-weight: bold;
+    left: 6px;
+    top: -30px;
+    background: transparent;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    font-size: 20px;
+    width: 0;
+    height: 0;
+    z-index: 2; }
 
 .category-grid .product.woocommerce {
   position: absolute;

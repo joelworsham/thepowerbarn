@@ -65,7 +65,7 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'assets/js/thepowerbarn.min.js': [
-                        'assets/js/source/deps/modernizer.js',
+                        'assets/js/source/deps/modernizr.js',
                         'assets/js/source/deps/jquery.cookie.js',
                         'assets/js/source/deps/placeholder.js',
                         'assets/js/source/deps/fastclick.js',

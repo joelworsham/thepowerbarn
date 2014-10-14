@@ -14,7 +14,7 @@ if ( ! $messages ) return;
 ?>
 
 <?php foreach ( $messages as $message ) : ?>
-	<div class="alert-box info" data-alert>
+	<div class="woocommerce-info alert-box info" data-alert>
 		<?php echo wp_kses_post( $message ); ?>
 		<span class="close"></span>
 	</div>

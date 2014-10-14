@@ -24,7 +24,12 @@ global $pb_all_products_link;
 	if ( ! isset( $_GET['flush_nav'] ) ) {
 		$nav_menu = get_transient( 'pb_nav_menu' );
 	} else {
-		echo 'Nav Flushed!';
+		?>
+		<div class="alert-box success" data-alert>
+			Nav Flushed!
+			<span class="close"></span>
+		</div>
+	<?php
 	}
 	if ( empty( $nav_menu ) ) {
 
