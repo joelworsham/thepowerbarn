@@ -1,5 +1,7 @@
 <?php
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+} // Exit if accessed directly
 
 global $term;
 ?>
@@ -25,6 +27,14 @@ global $term;
 		<div class="product-info">
 			<div class="product-description">
 				<?php echo wpautop( $term->description ); ?>
+				<?php
+				// Debugging
+				if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
+					echo '<pre>';
+					print_r( $term );
+					echo '</pre>';
+				}
+				?>
 			</div>
 
 			<a href="<?php echo get_term_link( $term ); ?>" class="button">Shop Now!</a>

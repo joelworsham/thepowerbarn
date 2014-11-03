@@ -37,7 +37,7 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 	 *
 	 * @return mixed The object retrieved from the database.
 	 */
-	public static function get_posts( $args = null, $bypass = false ) {
+	public static function get_posts( $args = null ) {
 
 		// See if our post type has been defined in the arguments
 		// Otherwise, set it to 'post' as default
@@ -65,7 +65,7 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 
 		// If bypass is set to true, skip getting the transient altogether
 		// Otherwise, get the transient and save it in $obj
-		if ( ! $bypass && ( ! defined( 'WP_DEBUG' ) || WP_DEBUG === false ) ) {
+		if ( ! defined( 'WP_DEBUG' ) || WP_DEBUG === false ) {
 			$obj = get_transient( 'pb_' . $ID );
 		} else {
 			$obj = null;
@@ -88,11 +88,11 @@ class ThePowerBarn_Transients extends ThePowerBarn {
 		return $obj;
 	}
 
-	public static function get_terms( $ID, $taxonomies = array( 'category' ), $args = null, $post_type = null, $bypass = false ) {
+	public static function get_terms( $ID, $taxonomies = array( 'category' ), $args = null, $post_type = null ) {
 
 		// If bypass is set to true, skip getting the transient altogether
 		// Otherwise, get the transient and save it in $obj
-		if ( ! $bypass && ( ! defined( 'WP_DEBUG' ) || WP_DEBUG === false ) ) {
+		if ( ! defined( 'WP_DEBUG' ) || WP_DEBUG === false ) {
 			$obj = get_transient( 'pb_' . $ID );
 		} else {
 			$obj = null;

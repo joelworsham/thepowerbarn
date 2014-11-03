@@ -36,7 +36,7 @@ do_action( 'woocommerce_before_main_content' );
 <?php endif; ?>
 
 <?php
-do_action( 'woocommerce_archive_description' );
+//do_action( 'woocommerce_archive_description' );
 
 if ( have_posts() ) : /**
  * woocommerce_before_shop_loop hook

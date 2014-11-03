@@ -21,19 +21,22 @@ $categories = get_terms( 'product_cat', array(
 ) );
 
 // Get the current category
-$term             = isset( $_GET['cat'] ) ? $_GET['cat'] : 0;
+$term             = isset( $_GET['product_cat'] ) ? $_GET['product_cat'] : 0;
 $current_category = $term != 0 ? get_term( $term, 'product_cat' ) : 'All';
 $current_category = $current_category != 'All' ? $current_category->name : 'All';
 ?>
 
 <form action="<?php echo home_url(); ?>" method="get" class="search-form">
+
+	<input type="hidden" name="post_type" value="product" />
+
 	<div class="select-container">
-		<select class="search-options" name="cat">
+		<select class="search-options" name="product_cat">
 			<option value="0" <?php selected( 0, $term ); ?>>All</option>
 			<?php
 			if ( ! empty( $categories ) ) {
 				foreach ( $categories as $category ) {
-					echo "<option value='$category->term_id'" . selected( $category->term_id, $term, false ) . '>';
+					echo "<option value='$category->slug'" . selected( $category->term_id, $term, false ) . '>';
 					echo $category->name;
 					echo '</option>';
 				}

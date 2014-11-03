@@ -31,7 +31,6 @@ var PB_Navigation;
             });
         },
         adjust_search_width: function () {
-            console.log('test');
             var option = $('.search-options').find('option:selected').text(),
                 container = $('.select-container'),
                 width_temp = container.find('.width-temp');

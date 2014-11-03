@@ -27,24 +27,13 @@ module.exports = function (grunt) {
         // SASS
         sass: {
             options: {
-                imagePath: 'assets/images'
+                style: 'compressed'
             },
             dist: {
-                options: {
-                    outputStyle: 'compressed'
-                },
                 files: {
                     'assets/css/thepowerbarn.main.min.css': 'assets/scss/main.scss'
                 }
             },
-            dev: {
-                options: {
-                    outputStyle: 'expanded'
-                },
-                files: {
-                    'assets/css/thepowerbarn.main.css': 'assets/scss/main.scss'
-                }
-            }
         },
 
         // Auto prefix our CSS with vendor prefixes
@@ -63,6 +52,9 @@ module.exports = function (grunt) {
         // Minify and concatenate scripts
         uglify: {
             dist: {
+                options: {
+                    sourceMap: true
+                },
                 files: {
                     'assets/js/thepowerbarn.min.js': [
                         'assets/js/source/deps/modernizr.js',

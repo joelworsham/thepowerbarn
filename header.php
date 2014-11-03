@@ -18,9 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $ThePowerBarn;
 ?>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!--suppress CheckImageSize -->
+<!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US" prefix="og: http://ogp.me/ns#">
 <head profile="http://gmpg.org/xfn/11">
 
@@ -51,7 +49,7 @@ global $ThePowerBarn;
 					</a>
 				</div>
 				<div class="site-address columns small-12 medium-6 alignright">
-					<span class="icon-phone"></span> Mason: (517) 694-9501 Jackson: (517) 782-3319
+					<span class="icon-phone"></span> Mason: (517) 694-9501 &bull; Jackson: (517) 782-3319
 				</div>
 				<div class="site-search columns small-12">
 					<?php get_search_form(); ?>
